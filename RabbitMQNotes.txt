@@ -1,0 +1,94 @@
+
+RabbitMQ öðrenirken aldýðým notlarým;
+
+  *MESSAGE QUEUE
+  -Yazýlým projelerinde iletiþim için kullanýlan yapý.
+  -Birbirinden baðýmsýz sistemler arasýnda veri alýþveriþi yapmak için kullanýlýr.
+  -Gönderilen mesajlarý kuyrukta saklar ve bu mesajlarý daha sonra iþler.
+  -Ýki yazýlým arasýnda kuyruðun olmasýnýn modellemesidir.
+
+  -Mesajdan kasýt:Ýki yazýlým arasýnda birbirlerine gönderdiði veriye mesaj denir. Publisherýn Consumer trf.dan iþlemesini istediði verinin kendisidir.
+
+  -PRODUCER(Yayýncý), PUBLISHER=>KUYRUÐA MESAJ GÖNDERÝR
+  -CONSUMER(Tüketici)=>KUYRUKTAKÝ MESAJLARI ÝÞLER-TÜKETÝR
+
+  *MESSAGE QUEUE: yapýlanmasý mimaride 'ASENKRON' bir davranýþ sergilenmesini saðlar. (Örn: ödeme yaptýktan sonra faturayý beklemeyiz. Fatura oluþturulunca bize mail olarak gelir.)
+                : Ýçerisindeki mesajlar CONSUMER trf.dan sýrayla iþlenir
+
+ *ASENKRON ÝLETÝÞÝMDE: Ýstek yapýlýr ve sonuç beklenmez, Message Broker'da mesajlar tutulur ve sýrayla iþlenir.(Örn: Mail göndermek, fatura oluþturmak, stok güncellemek vb. zaman gerektiren iþlemler asenkron iletiþim modeliyle iþlenebilir)
+
+ *MESSAGE BROKER: Messaqe Queue'yu kullanan teknolojilerin genel adý
+                : Ýçinde messaqeque'yi bulundurur. Bu queue üzerinden publisher=>consumer arasýndaki iletiþimi saðlar.
+                : 1 Message Broker içinde birden fazla queue bulunabilir.
+
+*MESSAGE BROKER(Messageque davranýþlarýný saðlar ) TEKNOLOJÝLERÝ;
+ -RabbitMQ
+ -Kafka
+ -ActiveMQ
+ -ZeroMQ
+ -NSQ
+ -REDIS
+ -IRONMQ vs.
+
+*RABBÝTMQ MEDÝR:  
+ -Open Source bir message queuing sistemi
+ -Cross platform 
+ -Cloudda hizmeti var
+
+ *NEDEN RABBÝTMQ KULLANIRIZ:
+ Uygulamalarda ölçeklendirilebilir ortam saðlamak için kullanýlýr.(Ölçeklendirilebilirden kasýt; Ödemeyi yaptýn faturayý beklemezsin. Faturalandýrmayý farklý bir serviste yapýyorsun uygulamayý ölçeklendirmiþ oluyorsun.)
+ Uygulamada userdan gelen isteklere anlýk cevap veremiyorsak kullanýcýyý oyalamak yerine bu süreci asenkron þekilde iþleyip yoðunluðu düþürürüz.
+ Bu tarz durumlarda asenkron süreci kontrol edecek yapý; RABBÝTMQ'dur.
+
+ RABBÝTMQ; Response time'ý uzun sürebilecek iþlemleri uygulamadan baðýmsýzlaþtýrýr ve buradaki sorumluluðu farklý bir uygulamanýnn üstlenmesini saðlayan mekanizma sunar.
+           Bu mekanizma uzun sürecek maliyetli iþleri Rabbitmq sayesinde kuyruða gönderir ve bu kuyruktaki iþlemler farklý bir yazýlým uygulamasý trf.dan iþlenerek sonuç asenkron þekilde ana uygulamadan baðýmsýz elde edilir. Böylece ana uygulamadaki yoðunluk minimilize edilir.
+
+
+RABBÝTMQ ÝÞLEYÝÞÝ;
+Rabbitmq bir 'Message Broker' old. için mesajlarý yayýnlayan publisher ve mesajý tüketen consumer servisleri trf.dan ortak kullanýlýr.
+
+
+           publish           routes             consumes
+Publisher========>Exchange==========> Queue ============> Consumer (Bu süreçte exchange de bulunan routing key deðeri kullanýlýr)
+
+*Publisher mesajý publish eder
+*Ýlgili mesajý Exchange karþýlar
+*Exchange belirtilen route ile mesajý ilgili kuyruða gönderir. (Mesajýn hangi kuyruða gideceði exchange içindeki route'dan öðrenilir)
+
+
+ TÜM BU SÜREÇLERDE RabbitMQ; AMQP(Advanced Message Queuing Protocol) protokolünü kullanarak iþlerini yapar.
+
+
+ EXCHANGE:Mesajlarýn nasýl iþleneceðinin modelini sunar.
+        : pUBLÝSHER'dan gönderilen mesajlarýn 'nasýl yönetileceðini' ve 'hangi route'lara yönlendirileceðini' belirlememiz için karar veren yapýdýr.
+
+ ROUTE  : Mesajlarýn exchange üzerinden kuyruklara nasýl gönderileceðini tanýmlayan yapý (Bütün exchanglerde route kullanýlmaz bazýlarýnda header kullanýlýr)
+        : Genel olarak mesajlarýn yolunu ifade eder.
+
+ Routing Key: Mesajlarýn hangi kuyruklara gönderileceði bilgisi tutulur.
+      
+
+       
+ BÝNDÝNG NEDÝR;                                                               BÝNDÝNG
+ Exchange ==> Que arasýndaki iliþki- arasýndaki baðlantý bindingtir. Exchange =======> Queue=======>Consumer
+
+ Exchange'in bind edildiði kuyruklardan hangisine mesaj göndereceðini anlamasý exchange türüne göre deðiþir.
+
+
+ EXCHANGE TYPES: 
+ 1.Direct Exchange: Mesajlar direkt olarak belirli bir kuyruða gönderir.(routing key). Mesajýn gideceði kuyruðun adý routing key ile ayný olunca mesaj gider. (Hata mesajlarý için kullanýlabilir. misal; dosya yükleme hatasý. Her hata türü için ayrý ayrý kuyruk oluþturulabilir)
+
+ 2.Fanout Exchange: Mesajlarýn bu exchange'e bind olmuþ olan tüm kuyruklara gönderilmesini saðlar. Publisher; mesajlarýn gönderildiði kuyruk isimlerini dikkate almaz ve tüm kuyruklara gönderir.
+
+ 3.Topic Exchange: Routing key kullanarak mesajlarý kuyruða gönderir. Bu exchange ile routing keyin bir kýsmý-formatý-yapýsýndaki keylere göre kuyruklara mesaj gönderilir. (log sistemi için kullanýlabilir. belirli kategoriye veya key'e göre loglar flitrelenir)
+
+ 4.Header Exchange: Routing key kullanmaz. Headerlarý kullanarak mesajlarý kuyruklara gönderir. (Key-value )
+
+-RabbitMq'yu docker olmadan webden kullanmak;
+ cloudamqp.com => create new instance
+ 
+ 
+PRATÝK;
+*RabbitMQ.Client kütüphanesini yükle. => nuget.org'tan
+*Nuget consola NuGet\Install-Package RabbitMQ.Client -Version 6.4.0
+(kütüphanemizi indirdik) publisher ve consumer için ayrý ayrý

@@ -1,0 +1,17 @@
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\bin\Debug\net5.0\RabbitMQ.ConsumerExchange.exe
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\bin\Debug\net5.0\RabbitMQ.ConsumerExchange.deps.json
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\bin\Debug\net5.0\RabbitMQ.ConsumerExchange.runtimeconfig.json
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\bin\Debug\net5.0\RabbitMQ.ConsumerExchange.runtimeconfig.dev.json
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\bin\Debug\net5.0\RabbitMQ.ConsumerExchange.dll
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\bin\Debug\net5.0\ref\RabbitMQ.ConsumerExchange.dll
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\bin\Debug\net5.0\RabbitMQ.ConsumerExchange.pdb
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\bin\Debug\net5.0\RabbitMQ.Client.dll
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\obj\Debug\net5.0\RabbitMQ.ConsumerExchange.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\obj\Debug\net5.0\RabbitMQ.ConsumerExchange.AssemblyInfoInputs.cache
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\obj\Debug\net5.0\RabbitMQ.ConsumerExchange.AssemblyInfo.cs
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\obj\Debug\net5.0\RabbitMQ.ConsumerExchange.csproj.CoreCompileInputs.cache
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\obj\Debug\net5.0\RabbitMQ.ConsumerExchange.csproj.CopyComplete
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\obj\Debug\net5.0\RabbitMQ.ConsumerExchange.dll
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\obj\Debug\net5.0\ref\RabbitMQ.ConsumerExchange.dll
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\obj\Debug\net5.0\RabbitMQ.ConsumerExchange.pdb
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Consume2\obj\Debug\net5.0\RabbitMQ.ConsumerExchange.genruntimeconfig.cache

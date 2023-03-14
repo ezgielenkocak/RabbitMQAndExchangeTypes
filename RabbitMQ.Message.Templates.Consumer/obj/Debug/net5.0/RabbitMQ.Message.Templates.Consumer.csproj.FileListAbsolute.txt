@@ -1,0 +1,3 @@
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Message.Templates.Consumer\bin\Debug\net5.0\RabbitMQ.Message.Templates.Consumer.exe
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Message.Templates.Consumer\bin\Debug\net5.0\RabbitMQ.Message.Templates.Consumer.dll
+C:\Users\elen.kocak\source\repos\RabbitMQPractice\RabbitMQ.Message.Templates.Consumer\bin\Debug\net5.0\RabbitMQ.Client.dll

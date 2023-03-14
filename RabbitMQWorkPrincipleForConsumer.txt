@@ -1,0 +1,5 @@
+Consumer Uygulamasý Ýþlem sýrasý;
+1-)Baðlantý oluþturma (Rabbitmq sunucusuna baðlantý oluþturuyorum)
+2-)Baðlantýyý Aktifleþtirme ve Kanal Açma (baðlantýyý aktifleþtirip baðlantý üzerinden iþlemleri yürütmek için channel açarýz)
+3-)Queue oluþturma (Mesajlarýn okunacaðý kuyruðu oluþtururuz)
+4-)Queue'den Mesaj Okuma (Kuyruktaki mesajlarý okuruz)
